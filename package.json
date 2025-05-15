@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/ckanth15/DevOps-Project/issues"
   },
-  "homepage": "https://github.com/ckanth15/DevOps-Project#readme"
+  "homepage": "https://github.com/ckanth15/DevOps-Project#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
 }
