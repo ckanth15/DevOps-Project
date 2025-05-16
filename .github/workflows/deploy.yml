@@ -30,8 +30,8 @@ jobs:
         working-directory: ./terraform
       - name: Terraform Plan
         id: plan
-        run: |-
-          -var="region=$region" \
+        run: |
+          -var="region=us-east-1" \
           -var="public_key=$PUBLIC_SSH_KEY" \
           -var="private_key=$PRIVATE_SSH_KEY" \
           -var="key_name=deployer-key" \
