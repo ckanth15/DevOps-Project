@@ -30,7 +30,8 @@ jobs:
         working-directory: ./terraform
       - name: Terraform Plan
         id: plan
-        run: |
+        run: |-
+          terraform plan -destroy \
           -var="region=us-east-1" \
           -var="public_key=$PUBLIC_SSH_KEY" \
           -var="private_key=$PRIVATE_SSH_KEY" \
