@@ -20,6 +20,8 @@ resource "aws_instance" "server" {
   ami           = "ami-084568db4383264d4"
   instance_type = "t2.micro"
   key_name = aws_key_pair.deployer.key_name
+  vpc_security_group_ids = [aws_security_group.maingroup.id]
+  iam_instance_profile = aws_iam_instance_profile.ec2-profile.name
   # Ssh connection block
   connection {
     type        = "ssh"
@@ -39,7 +41,7 @@ resource "aws_iam_instance_profile" "ec2-profile"{
 }
 # Create a security group
 resource "aws_security_group" "my_sg" {
-  vpc_id = aws_vpc.my_vpc.id
+  #vpc_id = aws_vpc.my_vpc.id
 
   ingress {
     description = ""
