@@ -5,16 +5,14 @@ variable "region" {
 
 # Add your key 
 variable "public_key" {
-    
-}
 
 }
+
 
 variable "private_key" {
 
 }
 
-}
 
 variable "key_name" {
 
