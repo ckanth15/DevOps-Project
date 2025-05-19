@@ -17,10 +17,10 @@ variable "private_key" {
 }
 
 
-# variable "key_name" {
+variable "key_name" {
 
 
-# }
+}
 
 # Assuming your keys are stored in the following paths
 locals {
