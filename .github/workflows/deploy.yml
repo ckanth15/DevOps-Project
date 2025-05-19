@@ -42,7 +42,11 @@ jobs:
         id: apply
         run: terraform apply PLAN
         working-directory: ./terraform
+      - name: Terraform Destroy var
+        id: destroy-var
+        run: terraform destroy -auto-approve -var="public_key=$PUBLIC_SSH_KEY" -var="private_key=$PRIVATE_SSH_KEY" -var="key_name=deployer-key"
+        working-directory: ./terraform
       - name: Terraform Plan Destroy
-        id: plan-destroy
+        id: destroy
         run: terraform destroy
         working-directory: ./terraform
