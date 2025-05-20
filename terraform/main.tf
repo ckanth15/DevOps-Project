@@ -43,7 +43,8 @@ resource "aws_iam_instance_profile" "ec2-profile"{
 resource "aws_security_group" "my_sg" {
   #vpc_id = aws_vpc.my_vpc.id
 
-  ingress {
+  ingress = [
+    {
     description = ""
     ipv6_cidr_blocks = []
     prefix_list_ids = []
@@ -52,10 +53,23 @@ resource "aws_security_group" "my_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]  # Allow SSH from anywhere (not recommended for production)
-  }
+    cidr_blocks = ["0.0.0.0/0",]  # Allow SSH from anywhere (not recommended for production)
+    },
+    {
+      cidr_blocks      = ["0.0.0.0/0", ]
+      description      = ""
+      from_port        = 80
+      ipv6_cidr_blocks = []
+      prefix_list_ids  = []
+      protocol         = "tcp"
+      security_groups  = []
+      self             = false
+      to_port          = 80
+    }
+  ]
 
-  egress {
+  egress = [
+    {
     description = ""
     ipv6_cidr_blocks = []
     prefix_list_ids = []
@@ -66,6 +80,7 @@ resource "aws_security_group" "my_sg" {
     protocol    = "-1"  # Allow all outbound traffic
     cidr_blocks = ["0.0.0.0/0"]
   }
+  ]
 
   tags = {
     Name = "my_sg"
